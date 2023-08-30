@@ -130,10 +130,10 @@ else:
     print("Su puntuación actual es de:",puntuacion)
 print("\nAquí finaliza el quiz.")
 #Dependiendo de la puntuación final, se le comunica al usuario su rendimiento
-if puntuacion == 5:
+if(puntuacion == 5):
     print("¡Enhorabuena!")
     print("¡Usted ha contestado todas las preguntas correctamente!")
-elif puntuacion == 4:
+elif(puntuacion == 4):
     print("Le falta 1 punto para tener el 100%.")
     print("Mejor suerte la próxima vez.")
 else:
