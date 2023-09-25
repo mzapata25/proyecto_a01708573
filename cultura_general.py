@@ -36,8 +36,7 @@ def contador_puntuacion (respuestas_usuario):
 ========  parte principal del programa =======================================
 """
 #Lista que contiene todas las respuestas correctas
-lista_respuestas = ["Miguel de Cervantes","1939","Canberra","Argentina",\
-"Júpiter"]
+lista_respuestas = ["a","c","b","c","d"]
 #Lista a la que el usuario irá añadiendo sus respuestas
 respuestas_usuario = []
 #Introducción para que el usuario entienda el funcionamiento
@@ -45,7 +44,7 @@ print("\nBienvenido al quiz de cultura general.")
 print("Se le darán 5 preguntas, con 4 opciones de respuesta cada una.")
 print("Solo una de ellas es la correcta.")
 print("Se sumará 1 punto por cada respuesta correcta a su puntuación total.")
-print("Se tiene que dar la respuesta tal y como está escrita en el programa.")
+print("Solo se admitirá la respuesta como una sola letra en minúscula.")
 print("¡Buena suerte!")
 print("\n1. ¿Quién fue el autor de Don Quijote de la Mancha?")
 print("a) Miguel de Cervantes")
