@@ -40,16 +40,16 @@ def contador_puntuacion (respuestas_usuario):
                 #Cada respuesta correcta suma un punto a la puntuación total
                 puntuacion_total += 1
                 #El condicional es para identificar la fila y su categoría
-                if row == 0:
+                if(row == 0):
                     #Se suma también un punto por categoría correspondiente
                     puntuacion_literatura += 1
-                elif row == 1:
+                elif(row == 1):
                     puntuacion_historia += 1
-                elif row == 2:
+                elif(row == 2):
                     puntuacion_geografia += 1
-                elif row == 3:
+                elif(row == 3):
                     puntuacion_deportes += 1
-                elif row == 4:
+                elif(row == 4):
                     puntuacion_ciencias += 1
             #La columna aumenta en 1 cada vez que se repite el ciclo
             col += 1
