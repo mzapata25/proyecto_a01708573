@@ -1,0 +1,18 @@
+Sub-Competencia:
+	
+	componente: aplica estructuras cíclicas para resolver un problema de manera eficiente (avance 5)
+
+Error original: Había escrito mi código de tal manera que el usuario tuviese que escribir toda la respuesta para que le marque correcto.
+
+	lista_respuestas = ["Miguel de Cervantes","1939","Canberra","Argentina",\
+	"Júpiter"]
+
+	print("Se tiene que dar la respuesta tal y como está escrita en el programa.")
+
+Cambio realizado: Corregí mi código para que el usuario solo tenga que escribir la respuesta como una letra en minúscula, para minimizar errores.
+
+	lista_respuestas = ["a","c","b","c","d"]
+
+	print("Solo se admitirá la respuesta como una sola letra en minúscula.")
+
+Líneas de código donde se ve la corrección: 39 y 47 (avance 5); 72 y 94 (en el último avance subido)
