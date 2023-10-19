@@ -1,18 +1,23 @@
 Sub-Competencia:
 	
-	componente: aplica estructuras cíclicas para resolver un problema de manera eficiente (avance 5)
+	Separa el código en funciones pequeñas reusables, haciendo uso correcto de paso por parametros y return (avance 3)
 
-Error original: Había escrito mi código de tal manera que el usuario tuviese que escribir toda la respuesta para que le marque correcto.
+Error original: Había escrito mi código de tal manera que las preguntas se deplieguen en un print por cada línea de texto vista en la pantalla y que cada pregunta requiriese de un condicional para comunicarle al usuario si su respuesta es correcta o no.
 
-	lista_respuestas = ["Miguel de Cervantes","1939","Canberra","Argentina",\
-	"Júpiter"]
+	
 
-	print("Se tiene que dar la respuesta tal y como está escrita en el programa.")
+Cambio realizado: Corregí mi código para incorporar 2 funciones, una que despligue las preguntas y las respuestas ofrecidas al usuario (contenidas en una sola lista) y otra que comunique al usuario si su respuesta es correcta o que le corrija si se ha equivocado.
 
-Cambio realizado: Corregí mi código para que el usuario solo tenga que escribir la respuesta como una letra en minúscula, para minimizar errores.
+Líneas de código donde se ve la corrección: función verificadora en las líneas 56-71, función para imprimir preguntas en las líneas 75-83
 
-	lista_respuestas = ["a","c","b","c","d"]
+Sub-Competencia:
+	
+	El estilo cumple con las normas y estándares enunciadas en el documento de PEP 8  (Revisión y Final)
 
-	print("Solo se admitirá la respuesta como una sola letra en minúscula.")
+Error original: Había escrito mi código con un exceso de comentarios, tanto dentro de las funciones como fuera de ellas, que no era necesario, ya que describía conceptos de forma muy obvia.
 
-Líneas de código donde se ve la corrección: 39 y 47 (avance 5); 72 y 94 (en el último avance subido)
+	
+
+Cambio realizado: Corregí mi código para eliminar cualquier comentario fuera de las funciones (todo concepto fuera de ellas ya era entendible) y también eliminé algunos comentarios innecesarios dentro de las funciones
+
+Líneas de código donde se ve la corrección: comentarios de la función contadora (localizada en las líneas 11-52), de la función verificadora (localizada en las líneas 56-71) y de la función para imprimir preguntas (localizada en las líneas 75-83).
