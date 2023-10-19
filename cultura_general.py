@@ -1,5 +1,5 @@
 """
-Proyecto Final Python (avance 7)
+Proyecto Final Python (entrega final)
 Quiz de cultura general.
 El programa realiza una serie de preguntas
 y compara las respuesta con las del usuario para evaluarlo.
@@ -19,29 +19,19 @@ def contador_puntuacion (respuestas_usuario):
     devuelve: lista con puntuación total del usuario 
     y puntuación por categorías
     """
-    #La puntuación comienza en 0, se suma un punto por respuesta correcta
     puntuacion_total = 0
-    #Cada categoría tiene su propia puntuación
     puntuacion_literatura = 0
     puntuacion_historia = 0
     puntuacion_geografia = 0
     puntuacion_deportes = 0
     puntuacion_ciencias = 0
-    #Row se refiere a la fila, cada categoría tiene su propia fila
     row = 0
-    #El ciclo se repite hasta agotar todas las filas
-    while row <= 4:
-        #Col se refiere a la columna, cada fila tiene 3 columnas
+    while(row <= 4):
         col = 0
-        #El ciclo se repite hasta agotar las columnas de una fila
-        while col <= 2:
-            #Siempre se compara la misma posición en ambas listas
+        while(col <= 2):
             if(lista_respuestas[row][col] == respuestas_usuario[row][col]):
-                #Cada respuesta correcta suma un punto a la puntuación total
                 puntuacion_total += 1
-                #El condicional es para identificar la fila y su categoría
                 if(row == 0):
-                    #Se suma también un punto por categoría correspondiente
                     puntuacion_literatura += 1
                 elif(row == 1):
                     puntuacion_historia += 1
@@ -51,36 +41,91 @@ def contador_puntuacion (respuestas_usuario):
                     puntuacion_deportes += 1
                 elif(row == 4):
                     puntuacion_ciencias += 1
-            #La columna aumenta en 1 cada vez que se repite el ciclo
             col += 1
-        #La fila aumenta en 1 cada vez que se repite el ciclo
         row += 1
-    #Se crea lista_puntuaciones con puntuacion_total como su primer valor
     lista_puntuaciones = [puntuacion_total]
-    #Con el append se añade a lista_puntuaciones los puntos de cada categoría
     lista_puntuaciones.append(puntuacion_literatura)
     lista_puntuaciones.append(puntuacion_historia)
     lista_puntuaciones.append(puntuacion_geografia)
     lista_puntuaciones.append(puntuacion_deportes)
     lista_puntuaciones.append(puntuacion_ciencias)
-    #La función devuelve lista_puntuaciones
     return lista_puntuaciones
+"""
+================== función verificadora  =====================================
+"""
+def verificador(respuesta, lista_respuestas, lista_correcciones, row, col):
+    """
+    (uso de condicionales, uso de funciones y listas anidadas)
+    recibe: respuesta en string, lista anidada con las respuestas correctas,
+    lista anidada con las correciones que recibirá el usuario, fila y columna
+    en forma de número entero
+    compara respuesta individual dada por el usuario con la lista para
+    verificar si es correcta, utilizando los índices de fila y columna
+    correspondientes
+    devuelve: "¡Correcto!" al usuario si la respuesta es la esperada
+    si no, le dice que es incorrecta y le informa de cuál era la esperada
+    """
+    if(respuesta == lista_respuestas[row][col]):
+        print("\n¡Correcto!")
+    else:
+        print("\nIncorrecto. La respuesta era",lista_correcciones[row][col])
+"""
+================== función para imprimir preguntas  ==========================
+"""
+def imprime_preguntas(lista_preguntas, cont):
+    """
+    (uso de funciones y listas)
+    recibe: lista que contiene las preguntas y opciones que se le desplegarán
+    al usuario en consola y contador en forma de número entero
+    devuelve: en orden, cada pregunta y sus cuatro opciones, dependiendo del
+    índice en la lista determinado por el contador
+    """
+    print(lista_preguntas[cont])
 """
 ========  parte principal del programa =======================================
 """
-#Lista anidada que contiene todas las respuestas correctas
 lista_respuestas = [["a","b","d"],
                     ["c","d","a"],
                     ["b","c","b"],
                     ["c","a","c"],
                     ["d","a","b"]]
-#Lista anidada a la que el usuario irá añadiendo sus respuestas
 respuestas_usuario = [["","",""],
                       ["","",""],
                       ["","",""],
                       ["","",""],
                       ["","",""]]
-#Introducción para que el usuario entienda el funcionamiento
+lista_correcciones = [["Miguel de Cervantes","Frankestein","El Hobbit"],
+                     ["1939","1776","EE.UU. y la URSS"],
+                     ["Canberra","Barcelona","Asia"],
+                     ["Argentina","Tokio","10 minutos"],
+                     ["Júpiter","118","32"]]
+lista_preguntas = ["\n1. ¿Quién fue el autor de Don Quijote de la Mancha?\n\
+a) Miguel de Cervantes\nb) Federico García Lorca\nc) Gustavo Adolfo Bécquer\n\
+d) William Shakespeare\n","\n2. ¿Cúal de estos libros escribió\
+ Mary Shelley?\na) Drácula\nb) Frankestein\nc) Harry Potter\n\
+d) La Divina Comedia\n","\n3. ¿Cuál de estos NO forma parte de la trilogía\
+ del Señor de los Anillos?\na) Las Dos Torres\nb) El Regreso del Rey\
+ \nc) La Comunidad del Anillo\nd) El Hobbit\n","\n4. ¿En qué año comenzó la\
+ Segunda Guerra Mundial?\na) 1930\nb) 1945\nc) 1939\nd) 1936\n","\n5. ¿En qué\
+ año declaró EE.UU. su independencia?\na) 1900\nb) 1789\nc) 1752\nd) 1776\n",
+"\n6. ¿Qué dos países protagonizaron la Guerra Fría?\na) EE.UU. y la URSS\
+\nb) EE.UU. y China\nc) EE.UU. y Reino Unido\nd) La URSS y China\n",
+"\n7. ¿Cuál es la capital de Australia?\na) Sydney\nb) Canberra\n\
+c) Melbourne\nd) Adelaida\n","\n8. ¿Dónde se encuentra la Sagrada Familia?\
+\na) Madrid\nb) Buenos Aires\nc) Barcelona\nd) Nueva York\n","\n9. ¿Cuál es\
+ el continente más grande del mundo?\na) América\nb) Asia\nc) Europa\n\
+d) África\n","\n10. ¿Qué país ganó el Mundial de fútbol en 2022?\na) Francia\
+\nb) Brasil\nc) Argentina\nd) España\n","\n11. ¿Dónde se celebraron las\
+ Olimpiadas de 2020?\na) Tokio\nb) Atenas\nc) Londres\nd) París\n",
+"\n12. ¿Cúanto dura un cuarto en baloncesto?\na) 5 minutos\nb) 15 minutos\
+\nc) 10 minutos\nd) 40 minutos\n","\n13. ¿Qué planeta es el más grande\
+ del sistema solar?\na) Saturno\nb) La Tierra\nc) Marte\nd) Júpiter\n",
+"\n14. ¿Cuántos elementos tiene la tabla periódica?\na) 118\nb) 120\nc) 200\
+\nd) 4\n","\n15. ¿Cuántos dientes tiene una persona adulta?\na) 25\nb) 32\
+\nc) 20\nd) 36\n"]
+cont = 0
+row = 0
+col = 0
 print("\nBienvenido al quiz de cultura general.")
 print("Se le darán 15 preguntas, con 4 opciones de respuesta cada una.")
 print("Solo una de ellas es la correcta.")
@@ -93,180 +138,100 @@ print("Al final del quiz, se le informará de su puntuación por cada \
 categoría y también de su puntuación total.")
 print("Solo se admitirá la respuesta como una sola letra en minúscula.")
 print("¡Buena suerte!")
-print("\n1. ¿Quién fue el autor de Don Quijote de la Mancha?")
-print("a) Miguel de Cervantes")
-print("b) Federico García Lorca")
-print("c) Gustavo Adolfo Bécquer")
-print("d) William Shakespeare\n")
-#El usuario da su respuesta en forma de input tipo string.
+imprime_preguntas(lista_preguntas, cont)
+cont += 1
 respuesta = input()
-#Se añade la respuesta dada por el usuario a la lista anidada
 respuestas_usuario[0][0] = respuesta
-'''
-El condicional evalúa si la respuesta del usuario es la correcta o no y
-se le informa correspondientemente.
-'''
-if(respuesta == "a"):
-    print ("\n¡Correcto!")
-else:
-    print("\nIncorrecto. La respuesta era Miguel de Cervantes.")
-print("\n2. ¿Cúal de estos libros escribió Mary Shelley?")
-print("a) Drácula")
-print("b) Frankestein")
-print("c) Harry Potter")
-print("d) La Divina Comedia\n")
+verificador(respuesta, lista_respuestas, lista_correcciones, row, col)
+imprime_preguntas(lista_preguntas, cont)
+cont += 1
 respuesta = input()
 respuestas_usuario[0][1] = respuesta
-if(respuesta == "b"):
-    print("\n¡Correcto!")
-else:
-    print("\nIncorrecto. La respuesta era Frankestein.")
-print("\n3. Nombre del tercer libro del Señor de los Anillos.")
-print("a) Las Dos Torres")
-print("b) El Hobbit")
-print("c) La Comunidad del Anillo")
-print("d) El Regreso del Rey\n")
+col = 1
+verificador(respuesta, lista_respuestas, lista_correcciones, row, col)
+imprime_preguntas(lista_preguntas, cont)
+cont += 1
 respuesta = input()
 respuestas_usuario[0][2] = respuesta
-if(respuesta == "d"):
-    print("\n¡Correcto!")
-else:
-    print("\nIncorrecto. La respuesta era El Regreso del Rey.")
-print("\n4. ¿En qué año comenzó la Segunda Guerra Mundial?")
-print("a) 1930")
-print("b) 1945")
-print("c) 1939")
-print("d) 1936\n")
+col = 2
+verificador(respuesta, lista_respuestas, lista_correcciones, row, col)
+imprime_preguntas(lista_preguntas, cont)
+cont += 1
 respuesta = input()
 respuestas_usuario[1][0] = respuesta
-if(respuesta == "c"):
-    print("\n¡Correcto!")
-else:
-    print("\nIncorrecto. La respuesta era 1939.")
-print("\n5. ¿En qué año declaró EE.UU. su independencia?")
-print("a) 1900")
-print("b) 1789")
-print("c) 1752")
-print("d) 1776\n")
+row = 1
+col = 0
+verificador(respuesta, lista_respuestas, lista_correcciones, row, col)
+imprime_preguntas(lista_preguntas, cont)
+cont += 1
 respuesta = input()
 respuestas_usuario[1][1] = respuesta
-if(respuesta == "d"):
-    print("\n¡Correcto!")
-else:
-    print("\nIncorrecto. La respuesta era 1776.")
-print("\n6. ¿Qué dos países protagonizaron la Guerra Fría?")
-print("a) EE.UU. y la URSS")
-print("b) EE.UU. y China")
-print("c) EE.UU. y Reino Unido")
-print("d) La URSS y China\n")
+col = 1
+verificador(respuesta, lista_respuestas, lista_correcciones, row, col)
+imprime_preguntas(lista_preguntas, cont)
+cont += 1
 respuesta = input()
 respuestas_usuario[1][2] = respuesta
-if(respuesta == "a"):
-    print("\n¡Correcto!")
-else:
-    print("\nIncorrecto. La respuesta era EE.UU y la URSS.")
-print("\n7. ¿Cuál es la capital de Australia?")
-print("a) Sydney")
-print("b) Canberra")
-print("c) Melbourne")
-print("d) Adelaida\n")
+col = 2
+verificador(respuesta, lista_respuestas, lista_correcciones, row, col)
+imprime_preguntas(lista_preguntas, cont)
+cont += 1
 respuesta = input()
 respuestas_usuario[2][0] = respuesta
-if(respuesta == "b"):
-    print("\n¡Correcto!")
-else:
-    print("\nIncorrecto. La respuesta era Canberra.")
-print("\n8. ¿Dónde se encuentra la Sagrada Familia?")
-print("a) Madrid")
-print("b) Buenos Aires")
-print("c) Barcelona")
-print("d) Nueva York\n")
+row = 2
+col = 0
+verificador(respuesta, lista_respuestas, lista_correcciones, row, col)
+imprime_preguntas(lista_preguntas, cont)
+cont += 1
 respuesta = input()
 respuestas_usuario[2][1] = respuesta
-if(respuesta == "c"):
-    print("\n¡Correcto!")
-else:
-    print("\nIncorrecto. La respuesta era Barcelona.")
-print("\n9. ¿Cuál es el continente más grande del mundo?")
-print("a) América")
-print("b) Asia")
-print("c) Europa")
-print("d) África\n")
+col = 1
+verificador(respuesta, lista_respuestas, lista_correcciones, row, col)
+imprime_preguntas(lista_preguntas, cont)
+cont += 1
 respuesta = input()
 respuestas_usuario[2][2] = respuesta
-if(respuesta == "b"):
-    print("\n¡Correcto!")
-else:
-    print("\nIncorrecto. La respuesta era Asia.")
-print("\n10. ¿Qué país ganó el Mundial de fútbol en 2022?")
-print("a) Francia")
-print("b) Brasil")
-print("c) Argentina")
-print("d) España\n")
+col = 2
+verificador(respuesta, lista_respuestas, lista_correcciones, row, col)
+imprime_preguntas(lista_preguntas, cont)
+cont += 1
 respuesta = input()
 respuestas_usuario[3][0] = respuesta
-if(respuesta == "c"):
-    print("\n¡Correcto!")
-else:
-    print("\nIncorrecto. La respuesta era Argentina.")
-print("\n11. ¿Dónde se celebraron las Olimpiadas de 2020?")
-print("a) Tokio")
-print("b) Atenas")
-print("c) Londres")
-print("d) París\n")
+row = 3
+col = 0
+verificador(respuesta, lista_respuestas, lista_correcciones, row, col)
+imprime_preguntas(lista_preguntas, cont)
+cont += 1
 respuesta = input()
 respuestas_usuario[3][1] = respuesta
-if(respuesta == "a"):
-    print("\n¡Correcto!")
-else:
-    print("\nIncorrecto. La respuesta era Tokio.")
-print("\n12. ¿Cúanto dura un cuarto en baloncesto?")
-print("a) 5 minutos")
-print("b) 15 minutos")
-print("c) 10 minutos")
-print("d) 40 minutos\n")
+col = 1
+verificador(respuesta, lista_respuestas, lista_correcciones, row, col)
+imprime_preguntas(lista_preguntas, cont)
+cont += 1
 respuesta = input()
 respuestas_usuario[3][2] = respuesta
-if(respuesta == "c"):
-    print("\n¡Correcto!")
-else:
-    print("\nIncorrecto. La respuesta era 10 minutos.")
-print("\n13. ¿Qué planeta es el más grande del sistema solar?")
-print("a) Saturno")
-print("b) La Tierra")
-print("c) Marte")
-print("d) Júpiter\n")
+col = 2
+verificador(respuesta, lista_respuestas, lista_correcciones, row, col)
+imprime_preguntas(lista_preguntas, cont)
+cont += 1
 respuesta = input()
 respuestas_usuario[4][0] = respuesta
-if(respuesta == "d"):
-    print("\n¡Correcto!")
-else:
-    print("\nIncorrecto. La respuesta era Júpiter.")
-print("\n14. ¿Cuántos elementos tiene la tabla periódica?")
-print("a) 118")
-print("b) 120")
-print("c) 200")
-print("d) 4\n")
+row = 4
+col = 0
+verificador(respuesta, lista_respuestas, lista_correcciones, row, col)
+imprime_preguntas(lista_preguntas, cont)
+cont += 1
 respuesta = input()
 respuestas_usuario[4][1] = respuesta
-if(respuesta == "a"):
-    print("\n¡Correcto!")
-else:
-    print("\nIncorrecto. La respuesta era 118.")
-print("\n15. ¿Cuántos dientes tiene una persona adulta?")
-print("a) 25")
-print("b) 32")
-print("c) 20")
-print("d) 36\n")
+col = 1
+verificador(respuesta, lista_respuestas, lista_correcciones, row, col)
+imprime_preguntas(lista_preguntas, cont)
+cont += 1
 respuesta = input()
 respuestas_usuario[4][2] = respuesta
-if(respuesta == "b"):
-    print("\n¡Correcto!")
-else:
-    print("\nIncorrecto. La respuesta era 32.")
-#La lista contiene la puntuación total y la puntuación por categorías
+col = 2
+verificador(respuesta, lista_respuestas, lista_correcciones, row, col)
 lista_puntuaciones = contador_puntuacion(respuestas_usuario)
-#Dependiendo de la puntuación final, se le comunica al usuario su rendimiento
 print("\nEstas son sus puntuaciones por categorías:")
 print("\nLiteratura:",lista_puntuaciones[1],"de 3.")
 print("Historia:",lista_puntuaciones[2],"de 3.")
